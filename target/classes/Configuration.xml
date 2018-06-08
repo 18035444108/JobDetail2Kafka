@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeHandlers>  
+           <typeHandler handler="com.golaxy.util.PtToLangHandler" javaType="java.lang.Long" jdbcType="VARCHAR"/>  
+        </typeHandlers>  
+  <environments default="development">
+    <environment id="development">
+      <transactionManager type="JDBC">
+        <property name="" value=""/>
+      </transactionManager>
+      <!--数据源(数据库的相关配置)-->
+      <dataSource type="UNPOOLED">
+        <property name="driver" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://10.120.17.70:3306/recruit"/>
+        <!-- <property name="url" value="jdbc:mysql://localhost:3333/recruit"/> -->
+        <property name="username" value="root"/>
+        <property name="password" value="ictsoft"/>
+      </dataSource>
+    </environment>
+  </environments>
+  <!--加载类的配置文件-->
+  <mappers>
+    <mapper resource="com/golaxy/entity/JobDetail.xml"/>
+  </mappers>
+</configuration>

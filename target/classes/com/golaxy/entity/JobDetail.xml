@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="job">
+	<!--查询结果集的配置文件-->
+  <resultMap type="com.golaxy.entity.JobDetail" id="jobdeatil">
+  	<result column="id" javaType="java.lang.String" jdbcType="INTEGER" property="id"/>
+    <result column="channel" jdbcType="INTEGER" property="ch"/>
+    <result column="jobId" jdbcType="VARCHAR" property="jid"/>
+    <result column="jobName" jdbcType="VARCHAR" property="jn"/>
+    <result column="companyId" jdbcType="VARCHAR" property="cid"/>
+    <result column="companyName" jdbcType="VARCHAR" property="cn"/>
+    <result column="jobsalary" jdbcType="VARCHAR" property="jsal"/>
+    <result column="joblocation" jdbcType="VARCHAR" property="jloc"/>
+    <result column="pubtime" javaType="java.lang.Long" jdbcType="VARCHAR" property="pt"/>
+    <result column="jobProperty" jdbcType="VARCHAR" property="jpro"/>
+    <result column="experience" jdbcType="VARCHAR" property="exp"/>
+    <result column="eduback" jdbcType="VARCHAR" property="edu"/>
+    <result column="recruitNumber" jdbcType="VARCHAR" property="rnum_s"/>
+    <result column="jobclass" jdbcType="VARCHAR" property="jclass"/>
+    <result column="jobdesc2" jdbcType="VARCHAR" property="jdesc"/>
+    <result column="companydesc2" jdbcType="VARCHAR" property="cdesc"/>
+    <result column="companysize" jdbcType="VARCHAR" property="csize_s"/>
+    <result column="companyPropery" jdbcType="VARCHAR" property="cpro"/>
+    <result column="companyOcupy" jdbcType="VARCHAR" property="cocu"/>
+    <result column="companyHomePage" jdbcType="VARCHAR" property="chome"/>
+    <result column="companyAddress" jdbcType="VARCHAR" property="caddr"/>
+    <result column="gatherTime" javaType="java.lang.Long" jdbcType="VARCHAR" property="gt"/>
+    
+  </resultMap>
+
+  <!--定义一个进行查询所有的sql语句-->
+  <select id="findAllJob" parameterType="java.lang.reflect.Array" resultMap="jobdeatil">
+    <!-- SELECT channel,jobId,jobName,companyId,companyName,jobsalary,joblocation,pubtime,jobProperty,experience,eduback,recruitNumber,jobclass,jobdesc2,jobdesc,companydesc,companydesc2,companysize,companyPropery,companyOcupy,companyHomePage,companyAddress,gatherTime FROM jobdetail limit #{array[0]},#{array[1]}; -->
+    select id,channel,jobId,jobName,companyId,companyName,jobsalary,joblocation,pubtime,jobProperty,experience,eduback,recruitNumber,jobclass,jobdesc2,companydesc2,companysize,companyPropery,companyOcupy,companyHomePage,companyAddress,gatherTime from jobdetail where id >#{array[0]} limit #{array[1]}; 
+  </select>
+  
+  <select id="findByJobId" parameterType="java.lang.String" resultMap="jobdeatil">
+  	select * from jobdetail where jobId=#{_parameter} ;
+  </select>
+  
+ 
+</mapper>
